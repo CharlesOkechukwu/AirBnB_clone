@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Create Custom Console for HBNB project"""
 import cmd
+import models
 from models.base_model import BaseModel
 
 
@@ -36,6 +37,24 @@ class HBNBCommand(cmd.Cmd):
             new_inst = eval(arg)()
             new_inst.save()
             print(new_inst.id)
+
+    def do_show(self, line):
+        """Display string representation of an instance"""
+        arg1 = self.parseline(line)[0]
+        arg2 = self.parseline(line)[1]
+        if arg1 is None:
+            print("** class name missing **")
+        elif arg1 not in self.__class:
+            print("** class doesn't exist **")
+        elif arg2 == "":
+            print("** instance id missing **")
+        else:
+            key = arg1 + '.' + arg2
+            instance = models.storage.all().get(key)
+            if instance is None:
+                print("** no instance found **")
+            else:
+                print(instance)
 
 
 if __name__ == '__main__':
