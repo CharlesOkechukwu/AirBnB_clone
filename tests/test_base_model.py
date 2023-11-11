@@ -14,6 +14,7 @@ class TestBaseModel(unittest.TestCase):
         """Test for 3-basemodel"""
         base1 = BaseModel()
         base2 = BaseModel()
+        
         self.assertIsInstance(base1, BaseModel)
         self.assertNotEqual(base1.id, base2.id)
 
@@ -51,12 +52,23 @@ class TestBaseModel(unittest.TestCase):
                     ).group()
                 )
             )
+        self.assertEqual(
+            str(base1),
+            "[BaseModel] ({}) {}".format(base1.id, base1.__dict__)
+        )
         base1.name = "Abdul"
         self.assertEqual(base1.name, "Abdul")
         base1.number = 54
         self.assertEqual(base1.number, 54)
-        temp = base1.updated_at
+        previous_updated_at = base1.updated_at
         base1.save()
-        self.assertTrue(temp < base1.updated_at)
+        self.assertTrue(previous_updated_at < base1.updated_at)
         dict_base = base1.to_dict()
         self.assertIsInstance(dict_base, dict)
+        self.assertEqual(dict_base["name"], "Abdul")
+        self.assertEqual(dict_base["number"], 54)
+        self.assertEqual(dict_base["__class__"], "BaseModel")
+
+
+if __name__ == "__main__":
+    unittest.main()
