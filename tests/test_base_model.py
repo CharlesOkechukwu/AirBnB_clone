@@ -39,7 +39,6 @@ class TestBaseModel(unittest.TestCase):
                     ).group()
                 )
             )
-        print(type(base1.created_at))
         self.assertIsInstance(base1.updated_at, datetime.datetime)
         self.assertEqual(
             str(base1.updated_at),
