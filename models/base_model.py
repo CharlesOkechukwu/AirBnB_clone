@@ -48,7 +48,10 @@ class BaseModel():
         dict_display = self.__dict__.copy()
         if "__class__" in dict_display.keys():
             dict_display.pop("__class__")
-        return "[{}] ({:s}) {}".format(self.__class__.__name__, self.id, dict_display)
+        return "[{}] ({:s}) {}".format(
+            self.__class__.__name__,
+            self.id, dict_display
+            )
 
     def save(self):
         """updates the public instance attribute updated_at with
