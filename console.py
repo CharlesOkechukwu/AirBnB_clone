@@ -75,6 +75,24 @@ class HBNBCommand(cmd.Cmd):
                 del storage.all()[key]
                 storage.save()
 
+    def do_all(self, line):
+        """print all instances associated with a class or not"""
+        arg1 = self.parseline(line)[0]
+        obj_dict = storage.all()
+        if arg1 is None:
+            print([str(obj_dict[inst]) for inst in obj_dict])
+        elif arg1 not in self.__class:
+            print("** class doesn't exist **")
+        else:
+            value = obj_dict.values()
+            cls_inst = []
+            for inst in value:
+                if arg1 == inst.__class__.__name__:
+                    cls_inst.append(inst.__str__())
+            print(cls_inst)
+
+
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
