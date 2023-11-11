@@ -9,12 +9,3 @@ class User(BaseModel):
     password = ''
     first_name = ''
     last_name = ''
-
-    def __str__(self):
-        """ A nicely printable string representation of the
-            object User
-        """
-        dict_display = self.__dict__.copy()
-        if "__class__" in dict_display.keys():
-            dict_display.pop("__class__")
-        return "[User] ({:s}) {}".format(self.id, dict_display)

@@ -1,20 +1,29 @@
 #!/usr/bin/python3
 """ Test for FileStorage class """
-from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
 import os
 import unittest
+import test_engine
 
 
 
 
 class TestFileStorage(unittest.TestCase):
     """ This is a test for FileStorage class """
+    @classmethod
+    def setUpClass(self):
+        """Setup method"""
+        if os.path.isfile(storage.file_path):
+            os.remove(storage.file_path)
+        storage.reload()
+        print(storage.all())
+
+        
+
     def test_5_file_storage(self):
         """ Test for FileStorage Class """
 
-        storage = FileStorage()
-        self.assertEqual(str(storage.all()), {})
+        self.assertEqual(storage.all(), {})
         base1 = BaseModel()
         base2 = BaseModel()
         key1 = base1.__class__.__name__ + base1.id
