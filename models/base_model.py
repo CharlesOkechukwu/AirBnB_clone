@@ -14,7 +14,11 @@ class BaseModel():
     defines all common attributes/methods for other classes.
     """
     def __init__(self, *args, **kwargs):
-        """ Instance method"""
+        """ Instance method
+        Args:
+            args (tuple): args
+            kwargs (dict): kwargs
+        """
         if kwargs or len(kwargs) != 0:
             for key, value in kwargs.items():
                 if key == "__class__":
@@ -65,7 +69,7 @@ class BaseModel():
             __dict__ of the instance
         """
         self.__dict__["__class__"] = self.__class__.__name__
-        dict_copy = dict(self.__dict__)
+        dict_copy = self.__dict__.copy()
         dict_copy['created_at'] = dict_copy['created_at'].isoformat()
         dict_copy['updated_at'] = dict_copy['updated_at'].isoformat()
         return dict_copy
