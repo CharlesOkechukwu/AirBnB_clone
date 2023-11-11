@@ -14,7 +14,7 @@ class TestBaseModel(unittest.TestCase):
         """Test for 3-basemodel"""
         base1 = BaseModel()
         base2 = BaseModel()
-        
+
         self.assertIsInstance(base1, BaseModel)
         self.assertNotEqual(base1.id, base2.id)
 
