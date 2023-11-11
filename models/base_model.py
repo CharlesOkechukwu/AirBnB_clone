@@ -61,7 +61,7 @@ class BaseModel():
         """ returns a dictionary containing all keys/values of
             __dict__ of the instance
         """
-        self.__dict__["__class__"] = "BaseModel"
+        self.__dict__["__class__"] = str(self).split()[0].strip("[]")
         dict_copy = dict(self.__dict__)
         dict_copy['created_at'] = dict_copy['created_at'].isoformat()
         dict_copy['updated_at'] = dict_copy['updated_at'].isoformat()
