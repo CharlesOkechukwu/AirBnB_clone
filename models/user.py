@@ -18,5 +18,3 @@ class User(BaseModel):
         if "__class__" in dict_display.keys():
             dict_display.pop("__class__")
         return "[User] ({:s}) {}".format(self.id, dict_display)
-
-
