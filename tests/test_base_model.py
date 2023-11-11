@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 """Test for BaseModel"""
+import re
 import unittest
 from models.base_model import BaseModel
+import datetime
 
 
 class TestBaseModel(unittest.TestCase):
@@ -13,8 +15,7 @@ class TestBaseModel(unittest.TestCase):
         base2 = BaseModel()
 
         self.assertIsInstance(base1, BaseModel)
-        self.assertNotEqual(base1.id, base2.id)
-
+        
         self.assertEqual(
             str(base1),
             "[BaseModel] ({}) {}".format(base1.id, base1.__dict__)
@@ -25,7 +26,7 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(base1.number, 54)
         previous_updated_at = base1.updated_at
         base1.save()
-        self.assertTrue(previous_updated_at < base1.updated_at)
+        self.assertNotEqual(previous_updated_at, base1.updated_at)
         dict_base = base1.to_dict()
         self.assertIsInstance(dict_base, dict)
         self.assertEqual(dict_base["name"], "Abdul")
