@@ -2,6 +2,7 @@
 """ This module contains storage """
 import json
 from models.base_model import BaseModel
+from models.user import User
 
 
 class FileStorage:
@@ -36,6 +37,9 @@ class FileStorage:
             with open(self.__file_path, "r") as file:
                 json_dict = json.load(file)
             for key, value in json_dict.items():
-                self.__objects[key] = (BaseModel(**value))
+                if value["__class__"] == "BaseModel":
+                    self.__objects[key] = (BaseModel(**value))
+                if value["__class__"] == "User":
+                    self.__objects[key] = (User(**value))
         except FileNotFoundError:
             return
