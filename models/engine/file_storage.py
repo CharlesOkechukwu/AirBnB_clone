@@ -16,7 +16,11 @@ class FileStorage:
     __file_path = os.getcwd() + "/file.json"
     __objects = {}
 
-    
+    @property
+    def file_path(self):
+        """Returns the file path"""
+        return self.__file_path
+
     def all(self):
         """ Returns the dictionary __objects """
         return self.__objects
@@ -44,7 +48,7 @@ class FileStorage:
             with open(self.__file_path, "r") as file:
                 json_dict = json.load(file)
             if len(json_dict) == 0:
-                self.objects = {}
+                return
             for key, value in json_dict.items():
                 if value["__class__"] == "BaseModel":
                     self.__objects[key] = (BaseModel(**value))
