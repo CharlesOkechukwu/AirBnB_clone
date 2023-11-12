@@ -1,10 +1,7 @@
 #!/usr/bin/python3
 """Test for User class"""
-import re
 import unittest
-from models.base_model import BaseModel
 from models.user import User
-import datetime
 
 
 class TestUser(unittest.TestCase):
