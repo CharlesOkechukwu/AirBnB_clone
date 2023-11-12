@@ -16,7 +16,6 @@ class TestBaseModel(unittest.TestCase):
 
         self.assertIsInstance(base1, BaseModel)
         self.assertNotEqual(base1.id, base2.id)
-
         self.assertEqual(
             base1.id,
             str(
@@ -39,7 +38,7 @@ class TestBaseModel(unittest.TestCase):
                     ).group()
                 )
             )
-        print(type(base1.created_at))
+
         self.assertIsInstance(base1.updated_at, datetime.datetime)
         self.assertEqual(
             str(base1.updated_at),

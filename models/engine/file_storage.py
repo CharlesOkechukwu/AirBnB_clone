@@ -3,12 +3,18 @@
 import json
 from models.base_model import BaseModel
 from models.user import User
+import os
 
 
 class FileStorage:
     """This defines the class FileStorage"""
-    __file_path = "file.json"
+    __file_path = os.getcwd() + "/file.json"
     __objects = {}
+
+    @property
+    def file_path(self):
+        """Returns the file path"""
+        return self.__file_path
 
     def all(self):
         """ Returns the dictionary __objects """
@@ -16,7 +22,7 @@ class FileStorage:
 
     def new(self, obj):
         """sets in __objects the obj with key <obj class name>.id"""
-        key = str(obj).split()[0].strip("[]") + '.' + obj.id
+        key = obj.__class__.__name__ + '.' + obj.id
         self.__objects[key] = obj
 
     def save(self):
