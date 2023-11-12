@@ -3,6 +3,12 @@
 import cmd
 from models.base_model import BaseModel
 from models import storage
+from models.user import User
+from models.place import Place
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.review import Review
 
 
 class HBNBCommand(cmd.Cmd):
@@ -11,7 +17,8 @@ class HBNBCommand(cmd.Cmd):
     and delete
     """
     prompt = '(hbnb) '
-    __class = ['BaseModel']
+    __class = ['BaseModel', 'User', 'Place', 'State',
+               'City', 'Amenity', 'Review']
 
     def do_EOF(self, line):
         """Handle end of file input"""
@@ -107,18 +114,20 @@ class HBNBCommand(cmd.Cmd):
             print("** value missing **")
         else:
             key = args[0] + '.' + args[1]
-            instance = storage.all().get(key)
+            obj = storage.all()
+            instance = obj[key]
             if instance is None:
                 print("** no instance found **")
             else:
                 keys = instance.__dict__.keys()
+                k_type = None
                 if args[2] in keys:
                     k_type = type(instance.__dict__[args[2]])
                 if k_type in [int, float, str]:
                     instance.__dict__[args[2]] = k_type(args[3])
                 else:
                     instance.__dict__[args[2]] = args[3]
-                instance.save()
+                storage.save()
 
 
 if __name__ == '__main__':
