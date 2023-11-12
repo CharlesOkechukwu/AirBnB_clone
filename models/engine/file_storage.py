@@ -46,17 +46,17 @@ class FileStorage:
             for key, value in json_dict.items():
                 if value["__class__"] == "BaseModel":
                     self.__objects[key] = (BaseModel(**value))
-                elif value["__class__"] == "User":
+                if value["__class__"] == "User":
                     self.__objects[key] = (User(**value))
-                elif value["__class__"] == "State":
+                if value["__class__"] == "State":
                     self.__objects[key] = (State(**value))
-                elif value["__class__"] == "City":
+                if value["__class__"] == "City":
                     self.__objects[key] = (City(**value))
-                elif value["__class__"] == "Amenity":
+                if value["__class__"] == "Amenity":
                     self.__objects[key] = (Amenity(**value))
-                elif value["__class__"] == "Place":
+                if value["__class__"] == "Place":
                     self.__objects[key] = (Place(**value))
-                elif value["__class__"] == "Review":
+                if value["__class__"] == "Review":
                     self.__objects[key] = (Review(**value))
         except FileNotFoundError:
             return
