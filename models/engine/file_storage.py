@@ -16,23 +16,7 @@ class FileStorage:
     __file_path = os.getcwd() + "/file.json"
     __objects = {}
 
-    @property
-    def file_path(self):
-        """Returns the file path"""
-        return self.__file_path
-
-    @property
-    def objects(self):
-        """Return __object"""
-        return self.__objects
-
-    @objects.setter
-    def objects(self, value):
-        """Set __objects to Value"""
-        if type(value) is not dict:
-            raise TypeError("Value must be dict type")
-        self.__objects = value
-
+    
     def all(self):
         """ Returns the dictionary __objects """
         return self.__objects
