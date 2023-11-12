@@ -56,6 +56,11 @@ class BaseModel():
             self.__class__.__name__,
             self.id, dict_display
             )
+    # def __delattr__(self):
+    #     """Removes Self from FileStorage.__objects"""
+    #     new_dict = models.storage.objects()
+    #     key = self.__class__.__name__ + '.' + self.id
+    #     new_dict.pop(key)
 
     def save(self):
         """updates the public instance attribute updated_at with

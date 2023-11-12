@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 if __name__ == "__main__":
+    #!/usr/bin/python3
     from models import storage
     from models.base_model import BaseModel
 
@@ -13,6 +14,5 @@ if __name__ == "__main__":
     my_model = BaseModel()
     my_model.name = "My_First_Model"
     my_model.my_number = 89
-    my_model.save()
-    print(storage.file_path)
-    print(my_model)
+    storage.save()
+    print(storage.all())
