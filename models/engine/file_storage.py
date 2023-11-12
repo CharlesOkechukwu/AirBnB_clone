@@ -16,11 +16,6 @@ class FileStorage:
     __file_path = os.getcwd() + "/file.json"
     __objects = {}
 
-    @property
-    def file_path(self):
-        """Returns the file path"""
-        return self.__file_path
-
     def all(self):
         """ Returns the dictionary __objects """
         return self.__objects
@@ -37,7 +32,6 @@ class FileStorage:
             temp[key] = value.to_dict()
         json_string = json.dumps(temp)
         # validate length
-
         with open(self.__file_path, "w") as file:
             file.write(json_string)
 
@@ -64,7 +58,5 @@ class FileStorage:
                     self.__objects[key] = (Place(**value))
                 elif value["__class__"] == "Review":
                     self.__objects[key] = (Review(**value))
-                else:
-                    print("Something went wrong")
         except FileNotFoundError:
             return
