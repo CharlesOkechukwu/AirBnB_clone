@@ -3,6 +3,11 @@
 import json
 from models.base_model import BaseModel
 from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 import os
 
 
@@ -15,6 +20,18 @@ class FileStorage:
     def file_path(self):
         """Returns the file path"""
         return self.__file_path
+
+    @property
+    def objects(self):
+        """Return __object"""
+        return self.__objects
+
+    @objects.setter
+    def objects(self, value):
+        """Set __objects to Value"""
+        if type(value) is not dict:
+            raise TypeError("Value must be dict type")
+        self.__objects = value
 
     def all(self):
         """ Returns the dictionary __objects """
@@ -42,10 +59,24 @@ class FileStorage:
         try:
             with open(self.__file_path, "r") as file:
                 json_dict = json.load(file)
+            if len(json_dict) == 0:
+                self.objects = {}
             for key, value in json_dict.items():
                 if value["__class__"] == "BaseModel":
                     self.__objects[key] = (BaseModel(**value))
-                if value["__class__"] == "User":
+                elif value["__class__"] == "User":
                     self.__objects[key] = (User(**value))
+                elif value["__class__"] == "State":
+                    self.__objects[key] = (State(**value))
+                elif value["__class__"] == "City":
+                    self.__objects[key] = (City(**value))
+                elif value["__class__"] == "Amenity":
+                    self.__objects[key] = (Amenity(**value))
+                elif value["__class__"] == "Place":
+                    self.__objects[key] = (Place(**value))
+                elif value["__class__"] == "Review":
+                    self.__objects[key] = (Review(**value))
+                else:
+                    print("Something went wrong")
         except FileNotFoundError:
             return
