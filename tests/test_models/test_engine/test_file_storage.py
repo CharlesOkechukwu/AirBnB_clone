@@ -9,8 +9,6 @@ import unittest
 class TestFileStorage(unittest.TestCase):
     """ This is a test for FileStorage class """
 
-       
-
     def test_5_file_storage(self):
         """ Test for FileStorage Class """
 
@@ -32,8 +30,6 @@ class TestFileStorage(unittest.TestCase):
         storage.new(base)
         self.assertEqual(storage.all(), {base_key: base})
         base.save()
-
-        
 
 
 if __name__ == "__main__":
