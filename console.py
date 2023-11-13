@@ -72,7 +72,7 @@ class HBNBCommand(cmd.Cmd):
         elif arg1 not in self.__class:
             print("** class doesn't exist **")
         elif arg2 == "":
-            print("** instance id is missing **")
+            print("** instance id missing **")
         else:
             key = arg1 + '.' + arg2
             instance = storage.all().get(key)
@@ -114,8 +114,7 @@ class HBNBCommand(cmd.Cmd):
             print("** value missing **")
         else:
             key = args[0] + '.' + args[1]
-            obj = storage.all()
-            instance = obj[key]
+            instance = storage.all().get(key)
             if instance is None:
                 print("** no instance found **")
             else:
