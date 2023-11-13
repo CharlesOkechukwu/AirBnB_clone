@@ -41,10 +41,9 @@ class BaseModel():
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
 
-        for key, value in models.storage.all().items():
-            if self.id == value.id:
-                return
-        models.storage.new(self)
+        key = self.__class__.__name__ + '.' + self.id
+        if key not in models.storage.all():
+            models.storage.new(self)
 
     def __str__(self):
         """ A nicely printable string representation of the
