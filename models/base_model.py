@@ -30,8 +30,9 @@ class BaseModel():
                         month=the_date[1],
                         day=the_date[2],
                         hour=the_date[3],
-                        second=the_date[4],
-                        microsecond=the_date[5]
+                        minute=the_date[4],
+                        second=the_date[5],
+                        microsecond=the_date[6]
                     )
                 else:
                     self.__dict__[key] = value

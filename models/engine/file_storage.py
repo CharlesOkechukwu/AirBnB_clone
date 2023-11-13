@@ -31,7 +31,6 @@ class FileStorage:
         for key, value in self.__objects.items():
             temp[key] = value.to_dict()
         json_string = json.dumps(temp)
-        # validate length
         with open(self.__file_path, "w") as file:
             file.write(json_string)
 
@@ -41,8 +40,8 @@ class FileStorage:
         try:
             with open(self.__file_path, "r") as file:
                 json_dict = json.load(file)
-            if len(json_dict) == 0:
-                return
+            # if len(json_dict) == 0:
+            #     return
             for key, value in json_dict.items():
                 if value["__class__"] == "BaseModel":
                     self.__objects[key] = (BaseModel(**value))
