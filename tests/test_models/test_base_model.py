@@ -50,9 +50,11 @@ class TestBaseModel(unittest.TestCase):
                     ).group()
                 )
             )
+        temp = base1.__dict__.copy()
+        del temp["__class__"]
         self.assertEqual(
             str(base1),
-            "[BaseModel] ({}) {}".format(base1.id, base1.__dict__)
+            "[BaseModel] ({}) {}".format(base1.id, temp)
         )
         base1.name = "Abdul"
         self.assertEqual(base1.name, "Abdul")
