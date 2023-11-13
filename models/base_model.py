@@ -40,9 +40,6 @@ class BaseModel():
             self.id = str(uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
-
-        key = self.__class__.__name__ + '.' + self.id
-        if key not in models.storage.all():
             models.storage.new(self)
 
     def __str__(self):
