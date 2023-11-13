@@ -36,17 +36,18 @@ class TestFileStorage(unittest.TestCase):
         base.save()
         self.assertTrue(os.path.exists("file.json"))
 
-    # def test_reload_method(self):
-    #     """Test reload() method"""
-    #     if os.path.exists("file.json"):
-    #         os.remove("file.json")
-    #     models.storage.reload()
-    #     self.assertEqual(models.storage.all(), {})
-    #     a = models.storage.all().copy()
-    #     base = BaseModel()
-    #     base.save()
-    #     models.storage.reload()
-    #     self.assertNotEqual(a, models.storage.all())
+    def test_reload_method(self):
+        """Test reload() method"""
+        if os.path.exists("file.json"):
+            os.remove("file.json")
+            FileStorage._FileStorage__objects = {}
+        models.storage.reload()
+        self.assertEqual(models.storage.all(), {})
+        a = models.storage.all().copy()
+        base = BaseModel()
+        base.save()
+        models.storage.reload()
+        self.assertNotEqual(a, models.storage.all())
 
 
 if __name__ == "__main__":
