@@ -1,8 +1,7 @@
 # AirBnB_clone
-![hbnb picture](https://s3.amazonaws.com/alx-intranet.hbtn.io/uploads/medias/2018/6/65f4a1dd9c51265f49d0.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUSBVO6H7D%2F20231113%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231113T150540Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=bd53754a5e74e5337c28cb61791d21f1c9e95cea3e1644d739f8ba2ee23473e9)
+ Welcome to the AirBnB clone project.
 
 ## Description
- Welcome to the AirBnB clone project.
  The goal of the project is to deploy on your server a simple copy of the [AirBnB website]("https://www.airbnb.com/").
 
  This repository will focus on building a command interpreter using python [cmd](https://docs.python.org/3/library/cmd.html) module to manipulate data without a visual interface and building and defining classes.
