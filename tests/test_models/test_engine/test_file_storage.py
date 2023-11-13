@@ -46,6 +46,7 @@ class TestFileStorage(unittest.TestCase):
         a = models.storage.all().copy()
         base = BaseModel()
         base.save()
+        FileStorage._FileStorage__objects = {}
         models.storage.reload()
         self.assertNotEqual(a, models.storage.all())
 
