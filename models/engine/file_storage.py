@@ -16,7 +16,6 @@ class FileStorage:
     __file_path = os.getcwd() + "/file.json"
     __objects = {}
 
-    
     def all(self):
         """ Returns the dictionary __objects """
         return self.__objects
@@ -33,7 +32,6 @@ class FileStorage:
             temp[key] = value.to_dict()
         json_string = json.dumps(temp)
         # validate length
-
         with open(self.__file_path, "w") as file:
             file.write(json_string)
 
@@ -44,23 +42,21 @@ class FileStorage:
             with open(self.__file_path, "r") as file:
                 json_dict = json.load(file)
             if len(json_dict) == 0:
-                self.objects = {}
+                return
             for key, value in json_dict.items():
                 if value["__class__"] == "BaseModel":
                     self.__objects[key] = (BaseModel(**value))
-                elif value["__class__"] == "User":
+                if value["__class__"] == "User":
                     self.__objects[key] = (User(**value))
-                elif value["__class__"] == "State":
+                if value["__class__"] == "State":
                     self.__objects[key] = (State(**value))
-                elif value["__class__"] == "City":
+                if value["__class__"] == "City":
                     self.__objects[key] = (City(**value))
-                elif value["__class__"] == "Amenity":
+                if value["__class__"] == "Amenity":
                     self.__objects[key] = (Amenity(**value))
-                elif value["__class__"] == "Place":
+                if value["__class__"] == "Place":
                     self.__objects[key] = (Place(**value))
-                elif value["__class__"] == "Review":
+                if value["__class__"] == "Review":
                     self.__objects[key] = (Review(**value))
-                else:
-                    print("Something went wrong")
         except FileNotFoundError:
             return

@@ -14,5 +14,5 @@ if __name__ == "__main__":
     my_model = BaseModel()
     my_model.name = "My_First_Model"
     my_model.my_number = 89
-    storage.save()
-    print(storage.all())
+    my_model.save()
+    print(my_model)
