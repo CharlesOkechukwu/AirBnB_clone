@@ -105,7 +105,7 @@ class HBNBCommand(cmd.Cmd):
         if arg1 is None:
             i = 0
             for inst in obj_dict:
-                i += 1 
+                i += 1
             print(i)
         elif arg1 not in self.__class:
             print("** class doesn't exist **")
