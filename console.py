@@ -98,6 +98,25 @@ class HBNBCommand(cmd.Cmd):
                     cls_inst.append(inst.__str__())
             print(cls_inst)
 
+    def do_count(self, line):
+        """Count all instances associated with a class or not"""
+        arg1 = self.parseline(line)[0]
+        obj_dict = storage.all()
+        if arg1 is None:
+            i = 0
+            for inst in obj_dict:
+                i += 1 
+            print(i)
+        elif arg1 not in self.__class:
+            print("** class doesn't exist **")
+        else:
+            value = obj_dict.values()
+            i = 0
+            for inst in value:
+                if arg1 == inst.__class__.__name__:
+                    i += 1
+            print(i)
+
     def do_update(self, line):
         """Update attributes value in an instance"""
         args = line.split(" ")
