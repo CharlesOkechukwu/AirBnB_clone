@@ -26,15 +26,15 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def do_quit(self, line):
-        """close or quit from console"""
+        """Close or quit from console"""
         return True
 
     def emptyline(self):
-        """handle when no input + ENTER is hit"""
+        """Handle when no input + ENTER is hit"""
         pass
 
     def do_create(self, line):
-        """create instance of a class and saves it as json"""
+        """Create instance of a class and saves it as json"""
         arg = self.parseline(line)[0]
         if arg is None:
             print("** class name missing **")
@@ -64,7 +64,7 @@ class HBNBCommand(cmd.Cmd):
                 print(instance)
 
     def do_destroy(self, line):
-        """delete an instance of a class"""
+        """Delete an instance of a class"""
         arg1 = self.parseline(line)[0]
         arg2 = self.parseline(line)[1]
         if arg1 is None:
@@ -83,7 +83,7 @@ class HBNBCommand(cmd.Cmd):
                 storage.save()
 
     def do_all(self, line):
-        """print all instances associated with a class or not"""
+        """Print all instances associated with a class or not"""
         arg1 = self.parseline(line)[0]
         obj_dict = storage.all()
         if arg1 is None:
@@ -127,6 +127,55 @@ class HBNBCommand(cmd.Cmd):
                 else:
                     instance.__dict__[args[2]] = args[3]
                 storage.save()
+
+    def default(self, line):
+        """Handles other commands and unknown commands"""
+
+        command_list = line.split(".")
+        class_name = command_list[0]
+        if class_name in self.__class:
+            cmd = command_list[1]
+            if cmd == "all()":
+                self.do_all(class_name)
+            elif cmd == "count()":
+                # self.do_count(class_name)
+                print("count command not implemented yet")
+            else:
+                all_commands = ["show", "destroy", "update"]
+                basic_cmd = cmd[0:cmd.find('(')]  # show, update
+                if basic_cmd in all_commands:
+                    if basic_cmd == "show":
+                        id = eval(cmd[cmd.find('(') + 1:cmd.find(')')])
+                        self.do_show("{} {}\n".format(class_name, id))
+                    elif basic_cmd == "destroy":
+                        id = eval(cmd[cmd.find('(') + 1:cmd.find(')')])
+                        self.do_destroy("{} {}\n".format(class_name, id))
+                    elif basic_cmd == "update":
+                        id = eval(cmd[cmd.find('(') + 1:cmd.find(')')])
+                        if type(id[1]) == dict:
+                            for key, value in id[1].items():
+                                self.do_update(
+                                    "{} {} {} {}".format(
+                                        class_name,
+                                        id[0],
+                                        key,
+                                        value
+                                        )
+                                    )
+                        else:
+                            self.do_update(
+                                "{} {} {} {}".format(
+                                    class_name,
+                                    id[0],
+                                    id[1],
+                                    id[2]
+                                    )
+                                )
+                else:
+                    print("*** Unknown syntax: {}".format(line))
+
+        else:
+            print("*** Unknown syntax: {}".format(line))
 
 
 if __name__ == '__main__':
