@@ -191,7 +191,6 @@ class HBNBCommand(cmd.Cmd):
                                 )
                 else:
                     print("*** Unknown syntax: {}".format(line))
-
         else:
             print("*** Unknown syntax: {}".format(line))
 

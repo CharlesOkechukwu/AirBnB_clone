@@ -56,7 +56,7 @@ class TestHelp(unittest.TestCase):
         with patch('sys.stdout', new=StringIO()) as output:
             HBNBCommand().onecmd("help destroy")
         self.assertEqual(expected_out, output.getvalue())
-    
+
 
 class TestCreate(unittest.TestCase):
     """ This is a test for FileStorage class """
@@ -79,7 +79,7 @@ class TestCreate(unittest.TestCase):
         with patch('sys.stdout', new=StringIO()) as output:
             HBNBCommand().onecmd("create User")
         self.assertTrue(output.getvalue())
-        
+
 
 class TestShow(unittest.TestCase):
     """ This is a test for FileStorage class """
@@ -104,7 +104,7 @@ class TestShow(unittest.TestCase):
         with patch('sys.stdout', new=StringIO()) as output:
             HBNBCommand().onecmd("show User")
         self.assertEqual(expected_out, output.getvalue())
-    
+
     def test_show_class_wrong_id(self):
         """Test show without class"""
         expected_out = "** no instance found **\n"
