@@ -157,8 +157,7 @@ class HBNBCommand(cmd.Cmd):
             if cmd == "all()":
                 self.do_all(class_name)
             elif cmd == "count()":
-                # self.do_count(class_name)
-                print("count command not implemented yet")
+                self.do_count(class_name)
             else:
                 all_commands = ["show", "destroy", "update"]
                 basic_cmd = cmd[0:cmd.find('(')]  # show, update
