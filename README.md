@@ -1,10 +1,13 @@
 # AirBnB_clone
+![hbnb picture](images/logo.png)
+
+
  Welcome to the AirBnB clone project.
 
+This is the first step towards building a full web application: the AirBnB clone. This first step is very important because it will be used during this project with all other following projects: HTML/CSS templating, database storage, API, front-end integration…
 ## Description
- The goal of the project is to deploy on your server a simple copy of the [AirBnB website]("https://www.airbnb.com/").
-
- This repository will focus on building a command interpreter using python [cmd](https://docs.python.org/3/library/cmd.html) module to manipulate data without a visual interface and building and defining classes.
+ The goal of the project is to deploy on your server a simple 
+ copy of the [AirBnB website]("https://www.airbnb.com/").
 
  
 ### Features of this project
@@ -14,7 +17,8 @@
 * A database or files that store data (data = objects)
 * An API that provides a communication interface between the front-end and your data (retrieve, create, delete, update them)
 
-This repo focuses on building the first feature.
+This repository will focus on building a command interpreter using python [cmd](https://docs.python.org/3/library/cmd.html) module to manipulate data without a visual interface and building and defining classes.
+
 
  
 ## Table of Contents
@@ -23,6 +27,8 @@ This repo focuses on building the first feature.
 - [Repository Content](#Repository-Contents)
 - [Development Enviroment](#contributing)
 - [Installation](#installation)
+- [Installation](#installation)
+- [List of commands](#list-of-commands)
 - [Example Usage](#example-usage)
 - [Tests](#tests)
 - [Acknowlegement](#acknowledgement)
@@ -169,5 +175,5 @@ $ python -m unittest discover tests
  This projects is dedicated to our pairs and mentors.
 
 ## Authors
-- [Abdullahi Mohammed Hsain](https://github.com/Abdulmohusain)
+- [Abdullahi Mohammed Husain](https://github.com/Abdulmohusain)
 - [ Charles Okechukwu](https://github.com/CharlesOkechukwu)
