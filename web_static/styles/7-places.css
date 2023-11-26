@@ -1,0 +1,20 @@
+section.places h1 {
+	font-size: 30px;
+	float: left;
+}
+section.places article {
+	padding: 20px;
+	margin: 20px;
+	width: 390px;
+	border: #FF5A5F 1px;
+	border-radius: 4px;
+}
+section.places div {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+section.place div h2 {
+	font-size: 30px;
+	text-align: center;
+}
